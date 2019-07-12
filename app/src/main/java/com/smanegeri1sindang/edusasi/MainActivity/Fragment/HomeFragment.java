@@ -12,6 +12,7 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
@@ -29,7 +30,7 @@ import com.smanegeri1sindang.edusasi.R;
 public class HomeFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
 
     private AdvanceDrawerLayout drawerLayout;
-    ImageButton NavBtn, NavBtn1;
+    ImageButton NavBtn, NavBtn1, DayNight, DayNight1;
     VideoView videoView;
     RelativeLayout header1, header, header2;
     ScrollView scrollView;
@@ -45,6 +46,23 @@ public class HomeFragment extends Fragment implements NavigationView.OnNavigatio
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        DayNight = (ImageButton) view.findViewById(R.id.daynight);
+        DayNight1 = (ImageButton) view.findViewById(R.id.daynight1);
+
+        DayNight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Test", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        DayNight1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Test1", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         header1 = (RelativeLayout) view.findViewById(R.id.headerHome1);
         header = (RelativeLayout) view.findViewById(R.id.headerHome);

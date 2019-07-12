@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".YouTubeDL.YouTubeDownloader.DownloadActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/_22sdp"
+        android:layout_marginRight="@dimen/_25sdp">
+
+        <ImageView
+            android:id="@+id/img_thumbnail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/videoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_thumbnail"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:textSize="@dimen/_11sdp"
+            android:textStyle="bold"
+            android:textColor="@color/semi_darker"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text=""/>
+
+      <ScrollView
+          android:layout_below="@+id/videoTitle"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginBottom="@dimen/_12sdp"
+          android:animateLayoutChanges="true">
+
+
+          <LinearLayout
+              android:id="@+id/ButtonLayout"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:layout_below="@+id/videoTitle"
+              android:gravity="center">
+
+              <include layout="@layout/item_divider"/>
+
+              <ProgressBar
+                  android:id="@+id/progressBar"
+                  android:layout_marginTop="@dimen/_120sdp"
+                  android:layout_marginBottom="@dimen/_120sdp"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_gravity="center"/>
+
+          </LinearLayout>
+
+      </ScrollView>
+
+    </RelativeLayout>
+
+</LinearLayout>

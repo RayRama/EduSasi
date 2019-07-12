@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp">
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/drawLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_more"
+            android:rotation="180"
+            android:background="@android:color/transparent"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:textSize="@dimen/_15sdp"
+            android:textColor="@color/darker"
+            android:text="FEATURES"
+            android:fontFamily="@font/titilliumweb_bold"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/getTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_centerHorizontal="true"
+            android:text="1 Jan 2019"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/daynight"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_moon"
+            android:background="?android:selectableItemBackground"/>
+    </RelativeLayout>
+
+</LinearLayout>

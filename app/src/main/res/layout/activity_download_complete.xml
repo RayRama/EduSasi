@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".YouTubeDL.YouTubeDownloaderComplete.DownloadActivityComplete">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/_25sdp"
+            android:layout_marginLeft="@dimen/_22sdp">
+
+            <TextView
+                android:id="@+id/header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="YouTube Downloader"
+                android:textAlignment="center"
+                android:textColor="@color/darker"
+                android:textStyle="bold"
+                android:textSize="@dimen/_25sdp" />
+
+            <include
+                android:layout_height="1dp"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/header"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginLeft="0.5dp"
+                layout="@layout/item_divider"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:id="@+id/TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/header"
+                android:layout_marginLeft="@dimen/_3sdp"
+                android:layout_marginRight="@dimen/_3sdp"
+                android:layout_marginTop="@dimen/_20sdp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/urlEditLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Paste URL"
+                    android:textSize="@dimen/_10sdp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/getDownloadLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/TextInputLayout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:backgroundTint="#255FEB"
+                android:text="Get Download Links"
+                android:textSize="@dimen/_10sdp"
+                android:textColor="#F8F8F8"
+                android:textAllCaps="false"/>
+
+            <LinearLayout
+                android:id="@+id/downloadLayout"
+                android:orientation="vertical"
+                android:layout_below="@id/getDownloadLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/img_thumbnailComplete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/getDownloadLink"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:id="@+id/videoTitleComplete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/img_thumbnail"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:textSize="@dimen/_11sdp"
+                    android:textStyle="bold"
+                    android:textColor="@color/semi_darker"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:text="Judul"/>
+
+                <ProgressBar
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:id="@+id/progressBarLoading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+</LinearLayout>

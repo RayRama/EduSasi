@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient_background"
+    tools:context=".MainActivity.Fragment.FeatureFragment">
+
+    <!--<com.infideap.drawerbehavior.AdvanceDrawerLayout
+        android:id="@+id/drawLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@android:color/white"
+        tools:openDrawer="start">-->
+<!--
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            android:theme="@style/Widget.Design.NavigationView"
+            app:menu="@menu/main_navbar"
+            app:headerLayout="@layout/main_navbar_header">
+
+        </com.google.android.material.navigation.NavigationView>-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/toolbar"
+                android:background="@android:color/white"
+                android:elevation="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp">
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/navBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="12.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/ic_more"
+                    android:rotation="180"
+                    android:background="@android:color/transparent"/>
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/_15sdp"
+                    android:textColor="@color/darker"
+                    android:text="Features"
+                    android:fontFamily="@font/titilliumweb_bold"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/getTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/title"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="@dimen/_11sdp"
+                    android:text="-"/>
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/daynight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="12.5dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_moon"
+                    android:background="?android:selectableItemBackground"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/main"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toolbar">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/test"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="Test"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    <!--</com.infideap.drawerbehavior.AdvanceDrawerLayout>-->
+
+</FrameLayout>

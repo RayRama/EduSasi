@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">EducationOfSasi</string>
+
+    <string name="welcome_scan">Easy to learn with Scanner</string>
+    <string name="intro_scan">Easy to get learning resources with your gadget</string>
+    <!--<string name="intro_scan">Mudahnya mencari materi hanya dengan scan QR\ndengan memanfaatkan hp yang kita miliki\nkapanpun dan dimana saja</string>-->
+    <string name="start_scan">Get Started</string>
+    <string name="access_camera">Access your camera</string>
+    <string name="access_intro">We will need your camera. Please allow this app to give you more experience</string>
+    <string name="allow_access">Allow Camera</string>
+    <string name="dont_allow">Not now</string>
+
+    <string name="scan_desc_guide">In this feature, you can search any video that we provides</string>
+
+    <string name="champions">Welcome back, <a href="http://smanegeri1sindang.sch.id">Champion !!!</a></string>
+
+    <string name="open_nav">Open Navigation</string>
+    <string name="close_nav">Close Navigation</string>
+
+</resources>

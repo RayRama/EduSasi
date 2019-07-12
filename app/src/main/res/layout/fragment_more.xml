@@ -68,37 +68,103 @@
                     android:layout_height="@dimen/_180sdp"
                     android:src="@drawable/header_settings"/>
 
-                <RelativeLayout
-                    android:id="@+id/newsSettings"
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_below="@id/headerSettings"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_45sdp">
-                    
-                    <ImageView
-                        android:id="@+id/newsIcon"
-                        android:layout_width="@dimen/_20sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_camera"/>
+                    android:layout_height="match_parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toEndOf="@id/newsIcon"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:textSize="@dimen/_12sdp"
-                        android:text="News Settings"
-                        android:textStyle="bold"/>
+                    <RelativeLayout
+                        android:id="@+id/newsSettings"
+                        android:layout_below="@id/headerSettings"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp">
+
+                        <ImageView
+                            android:id="@+id/newsIcon"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_camera"/>
+
+                        <TextView
+                            android:id="@+id/titleNews"
+                            android:layout_width="@dimen/_200sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@id/newsIcon"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:textSize="@dimen/_12sdp"
+                            android:text="News Settings"
+                            android:textStyle="bold"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/titleNews"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_back"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:layout_alignParentRight="true"
+                            android:rotation="180"/>
+
+                    </RelativeLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"/>
+                        android:layout_height="1dp"
+                        android:layout_gravity="bottom"
+                        android:background="#222"/>
 
-                </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/YouTubeSettings"
+                        android:layout_below="@id/headerSettings"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp">
+
+                        <ImageView
+                            android:id="@+id/YouTubeIcon"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_camera"/>
+
+                        <TextView
+                            android:id="@+id/titleYt"
+                            android:layout_width="@dimen/_200sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@id/YouTubeIcon"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:textSize="@dimen/_12sdp"
+                            android:text="YouTube Settings"
+                            android:textStyle="bold"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/titleYt"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_back"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:layout_alignParentRight="true"
+                            android:rotation="180"/>
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_gravity="bottom"
+                        android:background="#222"/>
+
+                </LinearLayout>
 
             </RelativeLayout>
 

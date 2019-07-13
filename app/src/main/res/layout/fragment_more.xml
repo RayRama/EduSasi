@@ -65,6 +65,9 @@
                 <ImageView
                     android:id="@+id/headerSettings"
                     android:layout_width="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
                     android:layout_height="@dimen/_180sdp"
                     android:src="@drawable/header_settings"/>
 
@@ -76,6 +79,7 @@
 
                     <RelativeLayout
                         android:id="@+id/ProfileSettings"
+                        android:clickable="true"
                         android:layout_below="@id/headerSettings"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_45sdp">
@@ -123,6 +127,7 @@
                         android:id="@+id/NewsSettings"
                         android:layout_below="@id/headerSettings"
                         android:layout_width="match_parent"
+                        android:clickable="true"
                         android:layout_height="@dimen/_45sdp">
 
                         <ImageView
@@ -167,6 +172,7 @@
                     <RelativeLayout
                         android:id="@+id/YouTubeSettings"
                         android:layout_below="@id/headerSettings"
+                        android:clickable="true"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_45sdp">
 

@@ -24,8 +24,10 @@
                     android:id="@+id/videoHeader"
                     android:layout_width="match_parent"
                     android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_height="@dimen/_200sdp" />
+                    android:layout_height="@dimen/_170sdp" />
 
                 <RelativeLayout
                     android:id="@+id/Header"
@@ -196,6 +198,7 @@
         <RelativeLayout
             android:id="@+id/headerHome"
             android:layout_width="match_parent"
+            android:background="@android:color/transparent"
             android:layout_height="@dimen/_50sdp">
 
                 <androidx.appcompat.widget.AppCompatImageButton

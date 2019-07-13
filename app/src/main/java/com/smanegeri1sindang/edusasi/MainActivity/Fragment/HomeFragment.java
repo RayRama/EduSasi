@@ -1,8 +1,10 @@
 package com.smanegeri1sindang.edusasi.MainActivity.Fragment;
 
 
+import android.annotation.TargetApi;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -72,22 +74,6 @@ public class HomeFragment extends Fragment implements NavigationView.OnNavigatio
         header1.setAlpha(0f);
         header.setAlpha(1f);
 
-        scrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
-            @Override
-            public void onScrollChanged() {
-                int maxDistance = header2.getHeight();
-                int movement = scrollView.getScrollY();
-                float alphaFactor = ((movement * 1.0f) / (maxDistance - header1.getHeight()));
-                float alphaFactor2 = ((movement * 0f) + (maxDistance + header.getHeight()));
-
-                if (movement > 0 && movement < maxDistance) {
-                    header.setAlpha(0f);
-                    header1.setAlpha(alphaFactor);
-                } else {
-                    header.setAlpha(alphaFactor2);
-                }
-            }
-        });
 
         videoView = (VideoView) view.findViewById(R.id.videoHeader);
         String path = "android.resource://"+getActivity().getPackageName()+"/"+R.raw.videoheader;
@@ -102,6 +88,7 @@ public class HomeFragment extends Fragment implements NavigationView.OnNavigatio
             }
         });
 
+        scroll21();
 
         drawerLayout = getActivity().findViewById(R.id.DrawLayout);
 
@@ -120,6 +107,51 @@ public class HomeFragment extends Fragment implements NavigationView.OnNavigatio
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
+    }
+
+    public void scroll21() {
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N_MR1) {
+
+            scrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+                @Override
+                public void onScrollChanged() {
+                    int maxDistance = scrollView.getHeight();
+                    int movement = scrollView.getScrollY();
+                    /*float alphaFactor = ((movement * 0f) + (maxDistance - header1.getHeight()));*/
+
+                    if (movement > 0 && movement < maxDistance) {
+                        header.setAlpha(0f);
+                        header1.setAlpha(1f);
+                    } else {
+                        header.setAlpha(1f);
+                        header1.setAlpha(0);
+                    }
+                }
+            });
+
+        } else {
+
+            scrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+                @Override
+                public void onScrollChanged() {
+                    int maxDistance = header2.getHeight();
+                    int movement = scrollView.getScrollY();
+                    float alphaFactor = ((movement * 1.0f) / (maxDistance - header1.getHeight()));
+                    float alphaFactor2 = ((movement * 0f) + (maxDistance + header.getHeight()));
+
+                    if (movement > 0 && movement < maxDistance) {
+                        header.setAlpha(0f);
+                        header1.setAlpha(alphaFactor);
+                    } else {
+                        header.setAlpha(alphaFactor2);
+                        header1.setAlpha(0f);
+                    }
+                }
+            });
+
+        }
 
     }
 

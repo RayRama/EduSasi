@@ -1,17 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="@dimen/_160sdp"
+    android:layout_height="@dimen/_180sdp"
     android:padding="@dimen/_10sdp">
 
-    <ImageView
-        android:layout_width="@dimen/_120sdp"
-        android:layout_height="@dimen/_120sdp"
-        android:src="@drawable/camera_intro"/>
+    <RelativeLayout
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Education of Sasi"/>
+        <ImageView
+            android:id="@+id/imgHeader"
+            android:layout_centerInHorizontal="true"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_120sdp"
+            android:src="@drawable/camera_intro"/>
+
+        <TextView
+            android:id="@+id/titleHeader"
+            android:layout_below="@+id/imgHeader"
+            android:layout_centerInHorizontal="true"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Education of Sasi"/>
+
+    </RelativeLayout>
+
+<!--    <View
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_below="@+id/titleHeader"
+        android:alpha="1"
+        android:id="@+id/viewDivider"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#222"
+        android:layout_centerHorizontal="true" />-->
+
 
 </LinearLayout>

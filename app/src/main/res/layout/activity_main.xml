@@ -35,13 +35,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/navbar"
-            android:background="@color/gray_bg"/>
+            android:background="@drawable/gradient_background"/>
 
        <com.etebarian.meowbottomnavigation.MeowBottomNavigation
            android:id="@+id/navbar"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_alignParentBottom="true"
+           android:background="@drawable/gradient_background"
            app:mbn_defaultIconColor="#90a4ae"
            app:mbn_rippleColor="#2f424242"
            app:mbn_selectedIconColor="#3c415e"

@@ -19,6 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".News.NewsMainActivity"></activity>
         <activity android:name=".YouTubeDL.YouTubeDownloaderComplete.DownloadActivityComplete">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -62,28 +63,28 @@
         </activity>
 
         <receiver
-            android:name="com.smanegeri1sindang.edusasi.YouTubeDL.YouTubeDownloaderFinishedReceiver.YouTubeDLReceiver"
-            android:exported="true"
+            android:name=".YouTubeDL.YouTubeDownloaderFinishedReceiver.YouTubeDLReceiver"
             android:enabled="true"
+            android:exported="true"
             android:process=".dlFinished">
             <intent-filter>
-                <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
             </intent-filter>
         </receiver>
 
         <activity android:name=".YouTubeDL.YouTubeDownloader.DownloadActivity" />
-
         <activity
             android:name=".Scanner.Result.ScanResult"
             android:theme="@style/NoActionBar" />
-
-        <activity android:name=".MainActivity.MainActivity" android:theme="@style/NoActionBar">
+        <activity
+            android:name=".MainActivity.MainActivity"
+            android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Scanner.History.HistoryActivity"
             android:theme="@style/NoActionBar" />

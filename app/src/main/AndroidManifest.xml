@@ -19,7 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".News.NewsMainActivity"></activity>
+        <activity android:name=".News.NewsMainActivity" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".YouTubeDL.YouTubeDownloaderComplete.DownloadActivityComplete">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

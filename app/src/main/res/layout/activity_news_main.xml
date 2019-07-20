@@ -1,9 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.infideap.drawerbehavior.AdvanceDrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/NewsdrawLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="inherit"
+    tools:openDrawer="start"
     tools:context=".News.NewsMainActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/news_content_main"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/News_nav_views"
+        android:layout_width="wrap_content"
+        android:layout_gravity="start"
+        android:background="@android:color/white"
+        android:layout_height="match_parent"
+        app:itemIconTint="@color/nav_item_colors"
+        app:itemBackground="@android:color/transparent"
+        app:itemTextColor="@color/nav_item_colors"
+        app:headerLayout="@layout/main_navbar_header"
+        app:menu="@menu/news_main_navbar">
+
+    </com.google.android.material.navigation.NavigationView>
+
+</com.infideap.drawerbehavior.AdvanceDrawerLayout>

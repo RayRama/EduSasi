@@ -88,6 +88,14 @@ public class NewsMainActivity extends AppCompatActivity implements NavigationVie
 
     }
 
+
+    private void reset() {
+        NewsMainApplication.isFirstPostLoaded = false;
+        NewsMainApplication.isViewPagerLoaded = false;
+        NewsMainApplication.isMainFragmentLoaded = false;
+        NewsMainApplication.isSimpleHomeWithSliderLoaded = false;
+    }
+
     private void showOfflineDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Ooppss....");

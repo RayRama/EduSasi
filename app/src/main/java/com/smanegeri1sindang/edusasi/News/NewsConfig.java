@@ -19,7 +19,7 @@ public class NewsConfig {
 
     public static final int POST_IN_CAROUSEL = 6;
 
-    public static final boolean SHARE_IMG_WITH_POST = false;
+    public static final boolean SHARE_IMG_WITH_POST = true;
 
     public static final boolean ALLOW_ADD_CARDS = false;
 

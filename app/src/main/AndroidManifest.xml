@@ -19,7 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".News.NewsDetailActivity"></activity>
+        <activity android:name=".News.WebViewActivity"></activity>
+        <activity android:name=".News.ImageViewerActivity" />
+        <activity android:name=".News.NewsDetailActivity" />
         <activity
             android:name=".News.NewsMainActivity"
             android:windowSoftInputMode="adjustPan" />

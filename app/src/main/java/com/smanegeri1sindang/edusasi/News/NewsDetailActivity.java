@@ -3,9 +3,11 @@ package com.smanegeri1sindang.edusasi.News;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
@@ -30,9 +32,13 @@ import com.bumptech.glide.request.target.Target;
 import com.google.android.material.appbar.AppBarLayout;
 import com.smanegeri1sindang.edusasi.News.database.PostsDatabase;
 import com.smanegeri1sindang.edusasi.News.models.post.Post;
+import com.smanegeri1sindang.edusasi.News.webview.CustomWebViewClient;
 import com.smanegeri1sindang.edusasi.R;
 
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.File;
 import java.text.DateFormat;
@@ -225,7 +231,45 @@ public class NewsDetailActivity extends AppCompatActivity {
     }
 
     private void savePost() {
+        if (currentPost!= null) {
+            new addToDatabase().execute(currentPost);
+        } else {
+            Toast.makeText(getApplicationContext(), "Post not loaded", Toast.LENGTH_SHORT).show();
+        }
 
+    }
+
+    boolean isActive;
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        isActive=false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isActive=true;
+    }
+
+    public class addToDatabase extends  AsyncTask<Post, Integer, Void> {
+
+        @Override
+        protected Void doInBackground(Post... posts) {
+            if (posts.length>0) {
+                PostsDatabase database = PostsDatabase.getAppDatabase(getApplicationContext());
+                database.postsDao().insertAll(posts[0]);
+                Log.e("PostsDao","Added "+posts.length+" posts");
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Toast.makeText(getApplicationContext(), "Saved successfully", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public class fetchFromDatabase extends AsyncTask<Integer, Integer, Post> {
@@ -248,7 +292,49 @@ public class NewsDetailActivity extends AppCompatActivity {
         }
 
     }
+
     private void writeWebView(Post post) {
+        String css = null;
+        css = "<link rel=\"stylesheet\" href=\"defaultstyles.css\" ><script src=\"script.js\"></script>";
+
+        String html = css + post.getContent().getRendered();
+        Document document = Jsoup.parse(html);
+
+        Elements imgs = document.select("img");
+        for (int i=0;i<imgs.size();i++) {
+            images.add(imgs.get(i).attr("src"));
+            imgs.get(i).attr("onClick", "imageClicked("+i+")");
+        }
+
+        Elements atags = document.select("a[href^=\""+NewsConfig.WEB_URL+"\"]");
+        for (Element element:atags) {
+            element.attr("onclick", "siteUrlClicked('" + element.attr("href") + "')");
+            element.attr("href", "#");
+        }
+
+        Elements rem = document.select("img[srcset");
+        for (Element img: rem) {
+            img.removeAttr("srcset");
+        }
+
+        if (post.getBetterFeaturedImage()!= null){
+            Element element = document.selectFirst("img");
+            if (element != null && element.attr("src").equals(post.getBetterFeaturedImage().getSourceUrl())) {
+                element.remove();
+            }
+        }
+
+        Resources resources = getResources();
+        float fontSize = R.dimen._13sdp;
+
+        postWebview.getSettings().setDefaultFontSize((int)fontSize);
+        postWebview.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                return true;
+            }
+        });
+        postWebview.setWebViewClient(new CustomWebViewClient(getApplicationContext(), images));
 
     }
 

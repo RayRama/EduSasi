@@ -21,6 +21,8 @@ public class NewsConfig {
 
     public static final boolean SHARE_IMG_WITH_POST = true;
 
+    public static final boolean OPEN_EXTERNAL_LINKS_IN_APP = true;
+
     public static final boolean ALLOW_ADD_CARDS = false;
 
     public static final int POST_IN_EACH_SECTION = 20;

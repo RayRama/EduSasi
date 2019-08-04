@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
@@ -31,8 +32,13 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
 import com.google.android.material.appbar.AppBarLayout;
 import com.smanegeri1sindang.edusasi.News.database.PostsDatabase;
+import com.smanegeri1sindang.edusasi.News.fragments.RelatedPostFrag;
 import com.smanegeri1sindang.edusasi.News.models.post.Post;
+import com.smanegeri1sindang.edusasi.News.network.ApiClient;
+import com.smanegeri1sindang.edusasi.News.network.ApiInterface;
+import com.smanegeri1sindang.edusasi.News.network.GetPost;
 import com.smanegeri1sindang.edusasi.News.webview.CustomWebViewClient;
+import com.smanegeri1sindang.edusasi.News.webview.WebAppInterface;
 import com.smanegeri1sindang.edusasi.R;
 
 import org.jsoup.Jsoup;
@@ -45,6 +51,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -253,6 +260,11 @@ public class NewsDetailActivity extends AppCompatActivity {
         isActive=true;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
     public class addToDatabase extends  AsyncTask<Post, Integer, Void> {
 
         @Override
@@ -325,7 +337,7 @@ public class NewsDetailActivity extends AppCompatActivity {
         }
 
         Resources resources = getResources();
-        float fontSize = R.dimen._13sdp;
+        float fontSize = resources.getDimension(R.dimen._13sdp);
 
         postWebview.getSettings().setDefaultFontSize((int)fontSize);
         postWebview.setOnLongClickListener(new View.OnLongClickListener() {
@@ -335,11 +347,64 @@ public class NewsDetailActivity extends AppCompatActivity {
             }
         });
         postWebview.setWebViewClient(new CustomWebViewClient(getApplicationContext(), images));
+        postWebview.addJavascriptInterface(new WebAppInterface(getApplicationContext(), postWebview, images),
+                "Android");
+        postWebview.getSettings().setJavaScriptEnabled(true);
+        postWebview.getSettings().setAllowFileAccess(true);
+        postWebview.getSettings().setAllowContentAccess(true);
+        postWebview.getSettings().setAppCacheEnabled(true);
+        postWebview.loadDataWithBaseURL("file:///android_asset", document.html(), "text/html", "UTF-8", null);
+        postWebview.setVisibility(View.VISIBLE);
+        loadReleatedPost();
+    }
 
+    private void loadReleatedPost() {
+        if (!offlinePost) {
+            replaceFragment(R.id.ReleatedPostFrame,
+                    new RelatedPostFrag().newInstance(10, getCategoryString(), currentPost.getId() + ""),
+                    "releatedPost", null);
+
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    releadetPostLayout.setVisibility(View.VISIBLE);
+                }
+            }, 2000);
+        }
+    }
+
+    private String getCategoryString() {
+        if (currentPost.getCategories() != null) {
+            Integer[] arr = currentPost.getCategories().toArray(new Integer[currentPost.getCategories().size()]);
+            String s = Arrays.toString(arr);
+            s = s.substring(1,s.length() - 1);
+            return s;
+        } else {
+            return null;
+        }
     }
 
     private void sendRequest() {
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        GetPost getPost = new GetPost(apiInterface, getApplicationContext());
+        getPost.setPostId(postId);
+        getPost.setSlug(slug);
+        getPost.setListner(new GetPost.Listner() {
+            @Override
+            public void onSuccess(Post post) {
+                loadingView.setVisibility(View.GONE);
+                currentPost = post;
+                loadData(post);
+                writeWebView(post);
+            }
 
+            @Override
+            public void onError(String msg) {
+                Toast.makeText(getApplicationContext(),"Error: "+msg,Toast.LENGTH_SHORT).show();
+            }
+        });
+        getPost.execute();
     }
 
     private void loadData(Post post) {

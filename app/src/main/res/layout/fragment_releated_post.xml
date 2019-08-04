@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".News.fragments.RelatedPostFrag">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.RecyclerView
+            android:visibility="gone"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/relatedPostFragmentRecyclerView"
+            android:focusable="true"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:layoutAnimation="@anim/layout_animation_from_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ProgressBar
+            android:id="@+id/relatedProgressBar"
+            android:visibility="visible"
+            android:layout_centerHorizontal="true"
+            android:minHeight="220dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/reloadBtn"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:text="Retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+</FrameLayout>

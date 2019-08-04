@@ -5,7 +5,7 @@ import java.util.List;
 
 public class NewsConfig {
 
-    public static String WEB_URL = "http://terabyte.smanegeri1sindang.sch.id";
+    public static String WEB_URL = "http://terra.smanegeri1sindang.sch.id";
 
     public static final String DEFAULT_IMG = "https://s25006.pcdn.co/wp-content/uploads/2015/09/google.png";
 
